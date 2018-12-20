@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Installing Package
+    yum:
+     name: ntp
+     state: latest
+  - name: Starting ntp Service
+    service:
+     name: ntpd
+     state: started
+  - name: Copying Files
+    copy:
+     src: /etc/ntp.conf
+     dest: /etc/ntp.conf
